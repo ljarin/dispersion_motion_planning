@@ -1,0 +1,13 @@
+name: cpplint-reviewdog
+on: [push]
+
+jobs:
+  cpplint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: reviewdog/action-cpplint@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          reporter: github-pr-check
+          filter: "-whitespace/comments,-whitespace/indent,-build/include_order,-whitespace/ending_newline"

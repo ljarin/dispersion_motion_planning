@@ -1,0 +1,125 @@
+{
+    "mp_type": "OptimizationMotionPrimitive",
+    "control_space_q": 1,
+    "num_dims": 2,
+    "tiling": false,
+    "dispersion": 0,
+    "dispersion_list": [
+        0
+    ],
+    "check_backwards_dispersion": true,
+    "max_state": [
+        1.51,
+        2.0,
+        10.0,
+        100.0
+    ],
+    "num_dense_samples": 100,
+    "vertices": [
+        [
+            0.0,
+            0.0
+        ],
+        [
+            1.0,
+            1.0
+        ],
+        [
+            2.0,
+            2.0
+        ]
+    ],
+    "edges": [
+        {},
+        {},
+        {},
+        {
+            "cost": 1,
+            "traj_time": 1,
+            "start_state": [
+                0.0,
+                0.0
+            ],
+            "end_state": [
+                1.0,
+                1.0
+            ],
+            "polys": [
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ]
+            ]
+        },
+        {},
+        {},
+        {
+            "cost": 2.5,
+            "traj_time": 2.5,
+            "start_state": [
+                0.0,
+                0.0
+            ],
+            "end_state": [
+                2.0,
+                2.0
+            ],
+            "polys": [
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.5,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    0.5,
+                    0.0
+                ]
+            ]
+        },
+        {
+            "cost": 1,
+            "traj_time": 1,
+            "start_state": [
+                1.0,
+                1.0
+            ],
+            "end_state": [
+                2.0,
+                2.0
+            ],
+            "polys": [
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ],
+                [
+                    0.0,
+                    0.0,
+                    0.0,
+                    1.0,
+                    0.0
+                ]
+            ]
+        },
+        {}
+    ],
+    "rho": 0
+}

@@ -1,0 +1,90 @@
+name: Build
+
+on: [push]
+
+env:
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    container: ros:noetic
+
+    steps:
+      - name: install apt deps
+        run: |
+          apt-get update
+          apt-get install -y libeigen3-dev libtbb-dev libgtest-dev python3-vcstool libgoogle-glog-dev autoconf libtool git python3-dev
+
+      - name: checkout motion_primitives
+        uses: actions/checkout@v2
+        with:
+          path: src/motion_primitives
+
+      - name: pull repos
+        shell: bash
+        run: |
+          cd src
+          cp motion_primitives/deps_https.repos .
+          vcs import < deps_https.repos
+
+      - name: install rosdeps
+        shell: bash
+        run: |
+          rosdep update
+          rosdep install --from-paths src --ignore-src -r -y
+
+      - name: build googletest
+        shell: bash
+        run: |
+          cd src/motion_primitives/external/googletest
+          mkdir build
+          cd build
+          cmake ..
+          make install
+
+      - name: Setup cmake
+        uses: jwlawson/actions-setup-cmake@v1.8
+        with:
+          cmake-version: "3.20.x"
+
+      - name: catkin_make
+        shell: bash
+        run: |
+          source /opt/ros/$ROS_DISTRO/setup.bash
+          catkin_make -DCMAKE_BUILD_TYPE=$BUILD_TYPE
+
+      - name: catkin_make run_tests
+        shell: bash
+        run: |
+          source /opt/ros/$ROS_DISTRO/setup.bash
+          catkin_make run_tests
+          catkin_test_results
+
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          cd src/motion_primitives/motion_primitives_py
+          python -m pip install -r requirements.txt
+
+      - name: Install ruckig python
+        run: |
+          cd src/motion_primitives/external/ruckig
+          python -m pip install .
+
+      - name: Install package
+        run: |
+          cd src/motion_primitives/motion_primitives_py
+          python -m pip install -e .
+
+      - name: Test with pytest
+        shell: bash
+        run: |
+          . devel/setup.bash
+          cd src/motion_primitives/motion_primitives_py/motion_primitives_py
+          pytest

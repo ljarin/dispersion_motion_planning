@@ -1,0 +1,28 @@
+
+<launch>
+<arg name="robot" default="quadrotor" />  
+<arg name="map_topic" default="mapper/local_voxel_map" />  
+<arg name="bagging" default="false"/>
+
+<arg name="prefix" value="nice -n 2"/>
+<arg name="param_file" default="$(find motion_primitives)/config/quad_control_tracker_params.yaml" />  
+
+<group ns="$(arg robot)">
+      <node pkg="motion_primitives"
+        type="motion_primitives_action_server"
+        name="local_plan_server"
+        output="screen">
+        <!-- launch-prefix="$(arg prefix)"> -->
+        <remap from="~voxel_map" to="$(arg map_topic)"/>
+        <rosparam file="$(arg param_file)"/>
+        <rosparam param="heuristic">"min_time"</rosparam>
+        <rosparam param="graph_files_dir" subst_value="True">"$(find motion_primitives)/motion_primitives_py/data/lattices/eth3/eth"</rosparam>
+	<rosparam param="parallel_expand">true</rosparam>        
+        <rosparam param="graph_files">['300','350','400']</rosparam>
+        <remap from="~planner_timeout" to="trackers_manager/local_global_server/local_plan_timeout_duration"/>
+      </node>
+  </group>
+
+ <include file="$(find motion_primitives)/launch/bagging.launch"  if="$(arg bagging)"/>
+ 
+</launch>

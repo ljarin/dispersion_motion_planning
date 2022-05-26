@@ -1,0 +1,35 @@
+attrs==21.4.0
+beniget==0.4.1
+cvxpy==1.1.18
+cycler==0.11.0
+Cython==0.29.27
+ecos==2.0.10
+fonttools==4.29.1
+gast==0.5.3
+iniconfig==1.1.1
+kiwisolver==1.3.2
+matplotlib==3.5.1
+mpmath==1.2.1
+numpy==1.22.2
+osqp==0.6.2.post5
+packaging==21.3
+Pillow==9.0.1
+pluggy==1.0.0
+ply==3.11
+py==1.11.0
+pybind11==2.9.1
+pyparsing==3.0.7
+pytest==7.0.0
+python-dateutil==2.8.2
+pythran==0.11.0
+PyYAML==6.0
+qdldl==0.1.5.post0
+reeds-shepp @ git+https://git@github.com/ghliu/pyReedsShepp@69aebbb6ad98f38b60e192999a7302d3b74bb7ad
+scipy==1.8.0
+scs==3.1.0
+six==1.16.0
+sobol-seq @ git+https://git@github.com/naught101/sobol_seq@8f819b68f64e1fea4999f5c64b73823a019fb244
+sympy==1.9
+tomli==2.0.0
+ujson==5.1.0
+--extra-index-url https://rospypi.github.io/simple/ rosbag

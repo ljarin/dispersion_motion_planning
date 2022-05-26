@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<launch>
+    <node pkg="rosbag" type="record" name="rosbag_record" args="record -o $(find motion_primitives)/motion_primitives_py/data/bags/planner -e /quadrotor/local_plan_server(.*) /quadrotor/local_global(.*) /unity_command/ground_truth/quadrotor/odom  /quadrotor/mapper/local_voxel_map /quadrotor/odom" output="screen">
+    </node>
+</launch>

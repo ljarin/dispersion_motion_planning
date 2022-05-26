@@ -1,0 +1,16 @@
+<launch>
+<arg name="robot" default="quadrotor" />  
+<arg name="map_topic" default="mapper/local_voxel_map" />  
+<arg name="param_file" default="$(find motion_primitives)/config/quad_control_tracker_params.yaml" />  
+
+<group ns="$(arg robot)">
+      <node pkg="motion_primitives"
+        type="planning_server.py"
+        name="local_plan_server"
+        output="screen">
+        <rosparam file="$(arg param_file)"/>
+        <remap from="voxel_map" to="$(arg map_topic)"/>
+      </node>
+  </group>
+
+</launch>

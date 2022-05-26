@@ -1,0 +1,22 @@
+<launch>
+  <arg name="robot" default="quadrotor" />  
+  <group ns="$(arg robot)">
+
+    <node pkg="motion_primitives"
+      type="motion_primitives_graph_search"
+      name="local_plan_server"
+      output="screen" 
+      >
+      <param name="graph_file" value="$(find motion_primitives)/motion_primitives_py/data/lattices/eth2/eth500.json"/>
+      <param name="map_file" value="$(find motion_primitives)/motion_primitives_py/data/maps/simple.bag"/>
+      <param name="map_topic" value="/voxel_map"/>
+      <rosparam param="start_state">[12.5,1.4,.1,.1,0,0]</rosparam>
+      <rosparam param="goal_state">[5.4,16.6,0,0,0,0]</rosparam>
+      <rosparam param="heuristic">"min_time"</rosparam>
+      <param name="access_graph" value="true"/>
+	<param name="distance_threshold" value="3"/>
+      </node>
+
+  </group>
+
+</launch>

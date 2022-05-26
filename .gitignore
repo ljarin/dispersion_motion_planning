@@ -1,0 +1,15 @@
+.vscode/
+__pycache__/
+*.__pycache__
+*.egg-info
+*.json
+*.mp4
+*.pdf
+*.png
+*.bag
+*.npy
+scratch_pad.py
+*.zip
+external/
+*.so
+build/

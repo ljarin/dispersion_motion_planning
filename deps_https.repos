@@ -1,0 +1,41 @@
+repositories:
+  motion_primitives/external/json:
+    type: git
+    url: https://github.com/nlohmann/json.git
+    version: develop
+  motion_primitives/external/ruckig:
+    type: git
+    url: https://github.com/ljarin/ruckig.git
+    version: laura_dev
+  motion_primitives/external/ruckig/pybind11:
+    type: git
+    url: https://github.com/pybind/pybind11.git
+    version: master
+  motion_primitives/external/googletest:
+    type: git
+    url: https://github.com/google/googletest.git
+    version: main  
+  kr_planning_msgs:
+    type: git
+    url: https://github.com/kumarrobotics/kr_planning_msgs.git
+    version: dispersion_planner
+  mav_trajectory_generation:
+    type: git
+    url: https://github.com/ljarin/mav_trajectory_generation.git
+    version: master
+  mav_comm:
+    type: git
+    url: https://github.com/ethz-asl/mav_comm.git
+    version: master
+  mav_trajectory_generation/nlopt:
+    type: git
+    url: https://github.com/stevengj/nlopt.git
+    version: master
+  mav_trajectory_generation/pybind11:
+    type: git
+    url: https://github.com/pybind/pybind11.git
+    version: master
+  glog_catkin:
+    type: git
+    url: https://github.com/ljarin/glog_catkin.git
+    version: master
